@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./index.css"></link>
+  <script src="./libs/aframe-v1.0.4.min.js"></script>
+  <script src="./bundle.js"></script>
+  <title>VR JAM 2020 [A-FRAME 1.0.4]</title>
+</head>
+<body>
+  <a-scene>
+    <a-assets>
+      <a-asset-item id="scene" src="./assets/scene.glb"></a-asset-item>
+      <a-asset-item id="flower04" src="./assets/flower04.glb"></a-asset-item>
+      <a-asset-item id="ground" src="./assets/ground.glb"></a-asset-item>
+    </a-assets>
+
+    <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
+
+    <a-entity position="-1 0 -1" gltf-model="#flower04"></a-entity>
+
+    <a-entity
+      gltf-model="#ground">
+    </a-entity>
+
+
+    <!-- <a-box src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2"></a-box> -->
+    <!-- <a-sky src="#skyTexture"></a-sky>  <a-light type="ambient" color="#445451"></a-light> -->
+    <a-light type="ambient" color="#445451"></a-light>
+    <a-light type="point" intensity="2" position="2 4 4"></a-light>
+  </a-scene>
+</body>
+</html>
