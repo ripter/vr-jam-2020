@@ -20,11 +20,11 @@
     </a-assets>
 
     <a-entity id="player" position="0 0.00 0">
-      <a-entity id="camera" camera wasd-controls look-controls>
+      <a-entity id="camera" camera wasd-controls="fly: true;" look-controls>
         <a-entity id="log" position="0.25 0 -0.5" text="value:; color: #0074D9;"></a-entity>
       </a-entity>
       <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: highPoly; color: #ffcccc"></a-entity>
-      <a-entity gltf-model="#slug" scale="10 10 10" position="0 0 0" rotation="0 180 0"></a-entity>
+      <a-entity gltf-model="#slug" scale="10 10 10" position="0 0 0" rotation="0 0 0"></a-entity>
     </a-entity>
 
     <a-entity scale="10 10 10">

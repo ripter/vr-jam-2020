@@ -1,9 +1,9 @@
 AFRAME.registerComponent('locomotion-motor', {
-  schema: {},  // System schema. Parses into `this.data`.
+  schema: {}, 
 
   init() {
     // Called on scene initialization.
-    console.log('motor init', this);
+    // console.log('motor init', this);
   },
 
   tick() {
