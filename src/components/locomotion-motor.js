@@ -1,5 +1,5 @@
 AFRAME.registerComponent('locomotion-motor', {
-  schema: {}, 
+  schema: {},
 
   init() {
     // Called on scene initialization.
