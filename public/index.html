@@ -24,15 +24,17 @@
         <a-entity id="log" position="0.25 0 -0.5" text="value:; color: #0074D9;"></a-entity>
       </a-entity>
       <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: highPoly; color: #ffcccc"></a-entity>
-      <!-- <a-entity gltf-model="#slug"></a-entity> -->
+      <a-entity gltf-model="#slug" scale="10 10 10" position="0 0 0" rotation="0 180 0"></a-entity>
     </a-entity>
 
-    <a-entity position="-1 0 -1" gltf-model="#flower04"></a-entity>
-    <a-entity position="-1.5 0 -1" gltf-model="#flower04"></a-entity>
-    <a-entity position="-1 0 -1.5" gltf-model="#flower04"></a-entity>
+    <a-entity scale="10 10 10">
+      <a-entity position="-1 0 -1" gltf-model="#flower04"></a-entity>
+      <a-entity position="-1.5 0 -1" gltf-model="#flower04"></a-entity>
+      <a-entity position="-1 0 -1.5" gltf-model="#flower04"></a-entity>
 
-    <a-entity
-      gltf-model="#ground">
+      <a-entity
+        gltf-model="#ground">
+      </a-entity>
     </a-entity>
 
 
