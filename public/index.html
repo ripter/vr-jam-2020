@@ -10,14 +10,22 @@
   <title>VR JAM 2020 [A-FRAME 1.0.4]</title>
 </head>
 <body>
-  <a-scene>
+  <a-scene stats>
     <a-assets>
       <a-asset-item id="scene" src="./assets/scene.glb"></a-asset-item>
       <a-asset-item id="flower04" src="./assets/flower04.glb"></a-asset-item>
       <a-asset-item id="ground" src="./assets/ground.glb"></a-asset-item>
+      <a-asset-item id="slug" src="./assets/slug.glb"></a-asset-item>
+
     </a-assets>
 
-    <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"></a-entity>
+    <a-entity id="player" position="0 0.00 0">
+      <a-entity id="camera" camera wasd-controls look-controls>
+        <a-entity id="log" position="0.25 0 -0.5" text="value:; color: #0074D9;"></a-entity>
+      </a-entity>
+      <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: highPoly; color: #ffcccc"></a-entity>
+      <!-- <a-entity gltf-model="#slug"></a-entity> -->
+    </a-entity>
 
     <a-entity position="-1 0 -1" gltf-model="#flower04"></a-entity>
     <a-entity position="-1.5 0 -1" gltf-model="#flower04"></a-entity>
