@@ -9,7 +9,7 @@ AFRAME.registerSystem('animate-slug', {
     this.slugMesh;
     this.headBone;
     this.handPosition = new THREE.Vector3();
-    this.boneOffset = new THREE.Vector3();
+    this.bonePosition = new THREE.Vector3();
 
     this.elLog = document.querySelector('#log');
   },
@@ -73,6 +73,6 @@ AFRAME.registerSystem('animate-slug', {
     console.log('addSlug', mesh);
     this.slugMesh = mesh;
     this.headBone = mesh.getObjectByName('HeadBone');
-    this.boneOffset.copy(this.headBone.position);
+    // this.boneOffset.copy(this.headBone.position);
   },
 });
