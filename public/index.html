@@ -13,14 +13,18 @@
   <a-scene stats>
     <a-assets>
       <a-asset-item id="scene" src="./assets/scene.glb"></a-asset-item>
+      <a-asset-item id="flower05" src="./assets/flower05.glb"></a-asset-item>
       <a-asset-item id="flower04" src="./assets/flower04.glb"></a-asset-item>
+      <a-asset-item id="flower01" src="./assets/flower01.glb"></a-asset-item>
+      <a-asset-item id="flower02" src="./assets/flower02.glb"></a-asset-item>
       <a-asset-item id="ground" src="./assets/ground.glb"></a-asset-item>
       <a-asset-item id="slug" src="./assets/slug.glb"></a-asset-item>
-
+      <a-asset-item id="lizard" src="./assets/lizard.glb"></a-asset-item>
+      <img id="sky" src="./assets/sky.png"></img>
     </a-assets>
 
     <a-entity id="player" position="0 0.00 0">
-      <a-entity id="camera" camera wasd-controls="fly: true;" look-controls>
+      <a-entity id="camera" camera wasd-controls="fly: true;" look-controls position="0 1.6 0">
         <a-entity id="log" position="0.25 0 -0.5" text="value:; color: #0074D9;"></a-entity>
       </a-entity>
       <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: highPoly; color: #ffcccc"></a-entity>
@@ -28,20 +32,20 @@
     </a-entity>
 
     <a-entity scale="10 10 10">
-      <a-entity position="-1 0 -1" gltf-model="#flower04"></a-entity>
+      <a-entity position="-1 0 -1" gltf-model="#flower01"></a-entity>
       <a-entity position="-1.5 0 -1" gltf-model="#flower04"></a-entity>
-      <a-entity position="-1 0 -1.5" gltf-model="#flower04"></a-entity>
+      <!-- <a-entity position="-1 0 -1.5" gltf-model="#lizard"></a-entity> -->
 
       <a-entity
         gltf-model="#ground">
       </a-entity>
     </a-entity>
 
-
+    <a-sky material="shader: gradient; topColor: red; bottomColor: #4daaf5;"></a-sky>
     <!-- <a-box src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2"></a-box> -->
     <!-- <a-sky src="#skyTexture"></a-sky>  <a-light type="ambient" color="#445451"></a-light> -->
-    <a-light type="ambient" color="#445451"></a-light>
-    <a-light type="point" intensity="2" position="2 4 4"></a-light>
+    <a-light type="hemisphere" light="color: #4daaf5; groundColor: #416234; intensity: 3;"></a-light>
+    <!-- <a-light type="point" intensity="2" position="2 4 4"></a-light> -->
   </a-scene>
 </body>
 </html>

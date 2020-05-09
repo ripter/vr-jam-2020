@@ -105,7 +105,43 @@ eval("AFRAME.registerComponent('animate-slug', {\n  schema: {},\n\n  init() {\n 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _systems_pull_locomotion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./systems/pull-locomotion */ \"./src/systems/pull-locomotion.js\");\n/* harmony import */ var _systems_pull_locomotion__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_systems_pull_locomotion__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _systems_animate_slug__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./systems/animate-slug */ \"./src/systems/animate-slug.js\");\n/* harmony import */ var _systems_animate_slug__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_systems_animate_slug__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_animate_slug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/animate-slug */ \"./src/components/animate-slug.js\");\n/* harmony import */ var _components_animate_slug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_animate_slug__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _shaders_gradient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./shaders/gradient */ \"./src/shaders/gradient/index.js\");\n/* harmony import */ var _systems_pull_locomotion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./systems/pull-locomotion */ \"./src/systems/pull-locomotion.js\");\n/* harmony import */ var _systems_pull_locomotion__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_systems_pull_locomotion__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _systems_animate_slug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./systems/animate-slug */ \"./src/systems/animate-slug.js\");\n/* harmony import */ var _systems_animate_slug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_systems_animate_slug__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _components_animate_slug__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/animate-slug */ \"./src/components/animate-slug.js\");\n/* harmony import */ var _components_animate_slug__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_animate_slug__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/shaders/gradient/fragment.glsl":
+/*!********************************************!*\
+  !*** ./src/shaders/gradient/fragment.glsl ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"uniform vec3 bottomColor;\\nuniform vec3 topColor;\\nuniform float offset;\\nuniform float exponent;\\nvarying vec3 vWorldPosition;\\n\\nvoid main() {\\n    float h = normalize( vWorldPosition + offset ).y;\\n    float rB = bottomColor.x/255.0;\\n    float gB = bottomColor.y/255.0;\\n    float bB = bottomColor.z/255.0;\\n    vec3 bColor = vec3(rB,gB,bB);\\n    float rT = topColor.x/255.0;\\n    float gT = topColor.y/255.0;\\n    float bT = topColor.z/255.0;\\n    vec3 tColor = vec3(rT,gT,bT);\\n    gl_FragColor = vec4( mix( bColor, tColor, max( pow( max( h, 0.0 ), exponent ), 0.0 ) ), 1.0 );\\n}\\n\");\n\n//# sourceURL=webpack:///./src/shaders/gradient/fragment.glsl?");
+
+/***/ }),
+
+/***/ "./src/shaders/gradient/index.js":
+/*!***************************************!*\
+  !*** ./src/shaders/gradient/index.js ***!
+  \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _vertex_glsl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vertex.glsl */ \"./src/shaders/gradient/vertex.glsl\");\n/* harmony import */ var _fragment_glsl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fragment.glsl */ \"./src/shaders/gradient/fragment.glsl\");\n\n\n\nconsole.log('vertexShader', _vertex_glsl__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\nAFRAME.registerShader('gradient', {\n  schema: {\n    topColor: {type: 'vec3', default: '255 0 0', is: 'uniform'},\n    bottomColor: {type: 'vec3', default: '0 0 255', is: 'uniform'},\n    offset: {type: 'float', default: '400', is: 'uniform'},\n    exponent: {type: 'float', default: '0.6', is: 'uniform'}\n  },\n  vertexShader: _vertex_glsl__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  fragmentShader: fragmentShader\n});\n\n\n//# sourceURL=webpack:///./src/shaders/gradient/index.js?");
+
+/***/ }),
+
+/***/ "./src/shaders/gradient/vertex.glsl":
+/*!******************************************!*\
+  !*** ./src/shaders/gradient/vertex.glsl ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"varying vec3 vWorldPosition;\\n\\nvoid main() {\\n\\tvec4 worldPosition = modelMatrix * vec4( position, 1.0 );\\n\\tvWorldPosition = worldPosition.xyz;\\n\\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\\n}\\n\");\n\n//# sourceURL=webpack:///./src/shaders/gradient/vertex.glsl?");
 
 /***/ }),
 

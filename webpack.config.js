@@ -11,5 +11,13 @@ module.exports = {
     compress: false,
     port: 9000,
     host: '0.0.0.0' // allow everyone on localhost to see the server
+  },
+  module: {
+    rules: [
+      {
+        test: /\.glsl/i,
+        use: 'raw-loader',
+      },
+    ],
   }
 };

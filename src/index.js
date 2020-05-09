@@ -1,3 +1,4 @@
+import './shaders/gradient';
 import './systems/pull-locomotion';
 import './systems/animate-slug';
 
