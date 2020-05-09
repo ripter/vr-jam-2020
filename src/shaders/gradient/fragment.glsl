@@ -1,19 +1,17 @@
 uniform vec3 bottomColor;
 uniform vec3 topColor;
-uniform float offset;
-uniform float exponent;
 varying vec3 vWorldPosition;
 
+/*
+ * Simple gradient between two values.
+*/
 void main() {
-    float h = normalize( vWorldPosition + offset ).y;
-    float rB = bottomColor.x/255.0;
-    float gB = bottomColor.y/255.0;
-    float bB = bottomColor.z/255.0;
-    vec3 bColor = vec3(rB,gB,bB);
-    float rT = topColor.x/255.0;
-    float gT = topColor.y/255.0;
-    float bT = topColor.z/255.0;
-    vec3 tColor = vec3(rT,gT,bT);
+  float minHeight = -1.0;
+  float maxHeight = 1.0;
+  float height = normalize( vWorldPosition ).y;
+  float alpha = (height - minHeight) / (maxHeight - minHeight);
+  vec3 color = vec3(0.0);
 
-    gl_FragColor = vec4( mix( bColor, tColor, max( pow( max( h, 0.0 ), exponent ), 0.0 ) ), 1.0 );
+  color = mix(bottomColor, topColor, alpha);
+  gl_FragColor = vec4(color, 1.0);
 }

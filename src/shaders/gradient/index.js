@@ -4,10 +4,9 @@ import fragmentShader from './fragment.glsl';
 
 AFRAME.registerShader('gradient', {
   schema: {
-    topColor: {type: 'color', default: '255 0 0', is: 'uniform'},
-    bottomColor: {type: 'color', default: '0 0 255', is: 'uniform'},
-    offset: {type: 'number', default: 400, is: 'uniform'},
-    exponent: {type: 'number', default: 0.6, is: 'uniform'}
+    topColor: {type: 'color', default: '#red', is: 'uniform'},
+    middleColor: {type: 'color', default: '#blue', is: 'uniform'},
+    bottomColor: {type: 'color', default: '#green', is: 'uniform'}
   },
   vertexShader: vertexShader,
   fragmentShader: fragmentShader
