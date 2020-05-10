@@ -109,15 +109,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sha
 
 /***/ }),
 
-/***/ "./src/shaders/gradient/fragment.glsl":
-/*!********************************************!*\
-  !*** ./src/shaders/gradient/fragment.glsl ***!
-  \********************************************/
+/***/ "./src/shaders/gradient/fragment-gradient-simple.glsl":
+/*!************************************************************!*\
+  !*** ./src/shaders/gradient/fragment-gradient-simple.glsl ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"uniform vec3 bottomColor;\\nuniform vec3 topColor;\\nuniform float offset;\\nuniform float exponent;\\nvarying vec3 vWorldPosition;\\n\\nvoid main() {\\n    float h = normalize( vWorldPosition + offset ).y;\\n    float rB = bottomColor.x/255.0;\\n    float gB = bottomColor.y/255.0;\\n    float bB = bottomColor.z/255.0;\\n    vec3 bColor = vec3(rB,gB,bB);\\n    float rT = topColor.x/255.0;\\n    float gT = topColor.y/255.0;\\n    float bT = topColor.z/255.0;\\n    vec3 tColor = vec3(rT,gT,bT);\\n    gl_FragColor = vec4( mix( bColor, tColor, max( pow( max( h, 0.0 ), exponent ), 0.0 ) ), 1.0 );\\n}\\n\");\n\n//# sourceURL=webpack:///./src/shaders/gradient/fragment.glsl?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"uniform vec3 bottomColor;\\nuniform vec3 topColor;\\nvarying vec3 vWorldPosition;\\n\\n/*\\n * Simple gradient between two values.\\n*/\\nvoid main() {\\n  float minHeight = -1.0;\\n  float maxHeight = 1.0;\\n  float height = normalize( vWorldPosition ).y;\\n  float alpha = (height - minHeight) / (maxHeight - minHeight);\\n  vec3 color = vec3(0.0);\\n\\n  color = mix(bottomColor, topColor, alpha);\\n  gl_FragColor = vec4(color, 1.0);\\n}\\n\");\n\n//# sourceURL=webpack:///./src/shaders/gradient/fragment-gradient-simple.glsl?");
 
 /***/ }),
 
@@ -129,7 +129,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _vertex_glsl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vertex.glsl */ \"./src/shaders/gradient/vertex.glsl\");\n/* harmony import */ var _fragment_glsl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fragment.glsl */ \"./src/shaders/gradient/fragment.glsl\");\n\n\n\nconsole.log('vertexShader', _vertex_glsl__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\nAFRAME.registerShader('gradient', {\n  schema: {\n    topColor: {type: 'vec3', default: '255 0 0', is: 'uniform'},\n    bottomColor: {type: 'vec3', default: '0 0 255', is: 'uniform'},\n    offset: {type: 'float', default: '400', is: 'uniform'},\n    exponent: {type: 'float', default: '0.6', is: 'uniform'}\n  },\n  vertexShader: _vertex_glsl__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  fragmentShader: fragmentShader\n});\n\n\n//# sourceURL=webpack:///./src/shaders/gradient/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _vertex_glsl__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vertex.glsl */ \"./src/shaders/gradient/vertex.glsl\");\n/* harmony import */ var _fragment_gradient_simple_glsl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fragment-gradient-simple.glsl */ \"./src/shaders/gradient/fragment-gradient-simple.glsl\");\n\n\n\n\nAFRAME.registerShader('gradient-simple', {\n  schema: {\n    topColor: {type: 'color', default: '#red', is: 'uniform'},\n    bottomColor: {type: 'color', default: '#blue', is: 'uniform'}\n  },\n  vertexShader: _vertex_glsl__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  fragmentShader: _fragment_gradient_simple_glsl__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n});\n\n\n//# sourceURL=webpack:///./src/shaders/gradient/index.js?");
 
 /***/ }),
 
@@ -141,7 +141,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ver
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"varying vec3 vWorldPosition;\\n\\nvoid main() {\\n\\tvec4 worldPosition = modelMatrix * vec4( position, 1.0 );\\n\\tvWorldPosition = worldPosition.xyz;\\n\\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\\n}\\n\");\n\n//# sourceURL=webpack:///./src/shaders/gradient/vertex.glsl?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"varying vec3 vWorldPosition;\\n\\nvoid main() {\\n\\tvec4 worldPosition = modelMatrix * vec4( position, 1.0 );\\n\\tvWorldPosition = worldPosition.xyz;\\n  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0 );\\n}\\n\");\n\n//# sourceURL=webpack:///./src/shaders/gradient/vertex.glsl?");
 
 /***/ }),
 

@@ -1,13 +1,12 @@
 import vertexShader from './vertex.glsl';
-import fragmentShader from './fragment.glsl';
+import fragmentGradientSimple from './fragment-gradient-simple.glsl';
 
 
-AFRAME.registerShader('gradient', {
+AFRAME.registerShader('gradient-simple', {
   schema: {
     topColor: {type: 'color', default: '#red', is: 'uniform'},
-    middleColor: {type: 'color', default: '#blue', is: 'uniform'},
-    bottomColor: {type: 'color', default: '#green', is: 'uniform'}
+    bottomColor: {type: 'color', default: '#blue', is: 'uniform'}
   },
   vertexShader: vertexShader,
-  fragmentShader: fragmentShader
+  fragmentShader: fragmentGradientSimple,
 });
