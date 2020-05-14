@@ -1,6 +1,10 @@
 import vertexShader from './vertex.glsl';
 import fragmentShader from './fragment.glsl';
 
+//
+// Copied assets, but haven't attempted to use yet. 
+//
+
 
 // Original from: https://codepen.io/al-ro/pen/jJJygQ?editors=1010
 // Based on:
