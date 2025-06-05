@@ -22,6 +22,6 @@
     "eslint-plugin-import": "^2.19.1",
     "raw-loader": "^4.0.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-server": "^5.2.1"
   }
 }
