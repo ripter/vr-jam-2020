@@ -16,7 +16,7 @@ lint: node_modules/
 	npx eslint --fix src/
 
 server: build
-	npx webpack-dev-server --https --open
+	npx webpack-dev-server --open
 
 test:
 	npx jest
